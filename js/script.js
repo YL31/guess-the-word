@@ -3,7 +3,7 @@ const guessButton = document.querySelector(".guess");
 const letterInput = document.querySelector(".letter");
 const wordInProgress = document.querySelector(".word-in-progress");
 const remainingGuessesElement = document.querySelector(".remaining");
-// const spanRemaining = document.querySelector("span");
+const spanRemaining = document.querySelector("span");
 const message = document.querySelector(".message");
 const playAgainButton = document.querySelector(".play-again");
 
@@ -114,10 +114,10 @@ const countRemainingGuesses = function (guess) {
     if (remainingGuesses === 0) {
       message.innerText = `Sorry, no more guesses left. The word is ${word.toUpperCase()}.`;
     } else if (remainingGuesses === 1) {
-      remainingGuessesElement.innerHTML =
-        '<p class="remaining">You have <span>1 guess</span> remaining.</p>';
-    } else if (remainingGuesses > 1) {
-      remainingGuessesElement.innerHTML = `<p class="remaining">You have <span>${remainingGuesses} guesses</span> remaining.</p>`;
+      spanRemaining.innerText =
+        `${remainingGuesses} guess`;
+    } else {
+      spanRemaining.innerText = `${remainingGuesses} guess`;
     }
   };
 
@@ -151,7 +151,7 @@ const startOver = function () {
     guessButton.classList.remove("hide");
     guessedLettersElement.innerHTML = "";
     guessedLettersElement.classList.remove("hide");
-    remainingGuessesElement.innerHTML = `<p class="remaining">You have <span>${remainingGuesses} guesses</span> remaining.</p>`;
+    spanRemaining.innerText = `${remainingGuesses} guesses`;
     remainingGuessesElement.classList.remove("hide");
     guessButton.classList.remove("hide");
     playAgainButton.classList.add("hide");
